@@ -48,3 +48,6 @@
   color:blueviolet;
   margin-bottom: 6px;
 }
+.preview a{
+  text-decoration: none;
+}

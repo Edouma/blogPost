@@ -3,6 +3,7 @@ import Navbar from './components/Navbar';
 import Blogs from './components/Blogs';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Create from './components/Create';
+import BlogDetails from './components/BlogDetails';
 
 function App() {
   return (
@@ -11,14 +12,18 @@ function App() {
       <Navbar/>
       <div className="content"> 
         <Switch>
-          <Route exact path="/">
+          {<Route exact path="/">
             <Blogs /> 
-          </Route>   
+          </Route>    } 
 
           <Route path="/create">
             <Create /> 
+          </Route> 
+
+          <Route path="/blogs/:id">
+            <BlogDetails /> 
           </Route>  
-            <Create />
+            
         </Switch>
         </div>
         
