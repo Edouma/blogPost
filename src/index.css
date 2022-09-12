@@ -49,5 +49,5 @@
   margin-bottom: 6px;
 }
 .preview a{
-  text-decoration: none;
+  text-decoration: none !important;
 }

@@ -1,11 +1,23 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import useFetchData from './useFetchData';
+import { Button } from 'react-bootstrap';
 
 const BlogDetails = () => {
     const {id}=useParams();
     const {myBlogs, error, loading}=useFetchData(' http://localhost:8000/blogs/' + id);
-    
+    const history = useHistory();
+
+    const handleDelete = ()=>{
+        fetch('http://localhost:8000/blogs/' + myBlogs.id,{
+            method: 'DELETE'
+        }).then(()=>{
+            history.push('/');
+        })
+
+        
+    }
+
     return ( 
         <div className="blog-details">
             {error && <div>{error} </div>}
@@ -15,8 +27,8 @@ const BlogDetails = () => {
                     <h5>{myBlogs.title}</h5>
                     <p>Done by: {myBlogs.author}</p>
                     <div>{myBlogs.body}</div>
-                </article>
-                
+                    <Button variant="outline-danger" className="mt-3" onClick={handleDelete}>Delete blog </Button>
+                </article>                                          
             )}
         </div>
      );
